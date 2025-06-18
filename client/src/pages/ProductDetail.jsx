@@ -125,10 +125,14 @@ const ProductDetail = () => {
 
                     <div className="mt-6">
                         {product.offerPrice ? (
-                            <p>
-                                <span className="text-gray-500/70 line-through">{formatVND(product.price)}{currency}</span>
-                                <span className="text-2xl font-medium">{formatVND(product.offerPrice)}.{currency}</span>
-                            </p>
+                            <>
+                                <p>
+                                    <span className="text-gray-500/70 line-through">{formatVND(product.price)}{currency}</span>
+                                </p>
+                                <p>
+                                    <span className="text-2xl font-medium">{formatVND(product.offerPrice)}.{currency}</span>
+                                </p>
+                            </>
                         ) : (
                             <p className="text-2xl font-medium">{formatVND(product.price)}{currency}</p>
                         )}
