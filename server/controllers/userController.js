@@ -29,6 +29,20 @@ export const register = async (req,res) =>{
           return res.json({success:false,message:'Email đã tồn tại'})
         }
 
+        if (name.length > 20 ) {
+          return res.json({
+            success: false,
+            message: 'Tên đăng nhập không được dài quá 20 ký tự'
+          });
+        }
+
+        if (name.length < 2) {
+          return res.json({
+            success: false,
+            message: 'Tên đăng nhập phải có ít nhất 2 ký tự'
+          });
+        }
+
         if (password.length < 6) {
           return res.json({
             success: false,
