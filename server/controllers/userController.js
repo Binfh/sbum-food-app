@@ -207,10 +207,18 @@ export const changePassword  = async (req, res) => {
       });
     }
 
-    if (password.length > 20) {
+    if (newPassword.length > 20) {
       return res.json({
         success: false,
         message: 'Mật khẩu không được dài quá 20 ký tự'
+      });
+    }
+
+    const specialCharRegex = /[^a-zA-Z0-9]/;
+    if (specialCharRegex.test(newPassword)) {
+      return res.json({
+        success: false,
+        message: 'Mật khẩu chỉ được chứa chữ cái và số, không được có ký tự đặc biệt hoặc dấu cách'
       });
     }
 
@@ -338,10 +346,18 @@ export const resetPassword = async (req, res) => {
       });
     }
 
-    if (password.length > 20) {
+    if (newPassword.length > 20) {
       return res.json({
         success: false,
         message: 'Mật khẩu không được dài quá 20 ký tự'
+      });
+    }
+
+    const specialCharRegex = /[^a-zA-Z0-9]/;
+    if (specialCharRegex.test(newPassword)) {
+      return res.json({
+        success: false,
+        message: 'Mật khẩu chỉ được chứa chữ cái và số, không được có ký tự đặc biệt hoặc dấu cách'
       });
     }
 
