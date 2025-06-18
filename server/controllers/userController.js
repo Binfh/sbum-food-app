@@ -57,6 +57,14 @@ export const register = async (req,res) =>{
           });
         }
 
+        const specialCharRegex = /[^a-zA-Z0-9]/;
+        if (specialCharRegex.test(password)) {
+          return res.json({
+            success: false,
+            message: 'Mật khẩu chỉ được chứa chữ cái và số, không được có ký tự đặc biệt hoặc dấu cách'
+          });
+        }
+
         if (!email.endsWith('@gmail.com')) {
             return res.json({
                 success: false,
