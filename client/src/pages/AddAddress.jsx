@@ -73,7 +73,6 @@ const AddAddress = () => {
                         placeholder='Họ'/>
                         <InputFeilds handleChange={handleChange} address={address} name='lastName' type='text' placeholder='Tên'/>
                     </div>
-                    <InputFeilds handleChange={handleChange} address={address} name='email' type='email' placeholder='Email'/>
                     <InputFeilds handleChange={handleChange} address={address} name='street' type='text' placeholder='Đường'/>
                     <div className='grid grid-cols-2 gap-4'>
                         <InputFeilds handleChange={handleChange} address={address} name='state' type='text' placeholder='Quận/Huyện'/>
