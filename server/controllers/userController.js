@@ -36,6 +36,20 @@ export const register = async (req,res) =>{
           });
         }
 
+        if (password.length > 20) {
+          return res.json({
+            success: false,
+            message: 'Mật khẩu không được dài quá 20 ký tự'
+          });
+        }
+
+        if (!email.endsWith('@gmail.com')) {
+            return res.json({
+                success: false,
+                message: 'Email không hợp lệ'
+            });
+        }
+
         const hashedPassword = await bcrypt.hash(password,10)
 
         const user = await User.create({name,email,password: hashedPassword})
@@ -171,6 +185,13 @@ export const changePassword  = async (req, res) => {
       });
     }
 
+    if (password.length > 20) {
+      return res.json({
+        success: false,
+        message: 'Mật khẩu không được dài quá 20 ký tự'
+      });
+    }
+
     // Find the user
     const user = await User.findById(userId);
     if (!user) {
@@ -292,6 +313,13 @@ export const resetPassword = async (req, res) => {
       return res.json({
         success: false,
         message: 'Mật khẩu mới phải có ít nhất 6 ký tự'
+      });
+    }
+
+    if (password.length > 20) {
+      return res.json({
+        success: false,
+        message: 'Mật khẩu không được dài quá 20 ký tự'
       });
     }
 
